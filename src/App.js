@@ -1,48 +1,67 @@
 import './Custom_bootstrap/custom.bootstrap.min.css';
-import logo from '../src/img/shared/logo.svg';
+
+import {Home, Destination, Header, Crew, Technology} from './components';
+import { Component} from 'react';
 
 
-function App() {
-  return (
-    <div>
-      <header>
-        <nav className='navbar'>
-          <img src={logo} alt='logon' className='navbar-brand'/>
-          
-          <div>
-          <hr/>
-            <ul className='navbar-nav container-fluid flex-row h-100 justify-content-center'>
-            
-              <li className='navbar-item active'>
-                <button className='navbar-link h-100 bg-transparent border-0 text-white'>
-                  <span>00</span>Home
-                </button>
-              </li>
+function Main (){
 
-              <li className='navbar-item nactive'>
-                <button className='navbar-link h-100 bg-transparent border-0 text-white'>
-                  <span>01</span>Destination
-                </button>
-              </li>
+  switch(window.location.pathname){
+    case("/destination"):
+      return(<Destination/>)
+    case("/crew"):
+      return(<Crew/>)
+    case("/technology"):
+      return(<Technology/>)
+    default:
+      return(<Home/>)
+    
+  }
 
-              <li className='navbar-item nactive'>
-                <button className='navbar-link h-100 bg-transparent border-0 text-white'>
-                  <span>02</span>Crew
-                </button>
-              </li>
+    
+    
+  }
 
-              <li className='navbar-item nactive'>
-                <button className='navbar-link h-100 bg-transparent border-0 text-white'>
-                  <span>03</span>Technology
-                </button>
-              </li>
-              </ul>
-            </div>
-          </nav>
-      </header>
-      
-    </div>
-  );
-}
+  function getPage(){
+    switch(window.location.pathname){
+      case("/destination"):
+      return(1)
+    case("/crew"):
+      return(2)
+    case("/technology"):
+      return(3)
+    default:
+      return(0)
+    }
+  }
+
+class App extends Component{
+
+ 
+  componentDidMount(){
+
+    let li = Array.from(document.getElementsByClassName('navbar-item'));
+    let page = getPage();
+    li[page].classList.remove('nactive');
+    li[page].classList.add('active');
+
+  }
+  
+
+
+  render(){
+    return ( 
+      <div id='render' className='h-100'>
+        
+        <Header/>
+        <Main/>
+        
+      </div>
+    );
+  }
+    
+  } 
+  
+
 
 export default App;

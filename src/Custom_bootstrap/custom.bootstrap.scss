@@ -1,7 +1,14 @@
 
 $primary: #0B0D17;
 $secondary: #D0D6F9;
-
+$grid-breakpoints:(
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1030px,
+  xl: 1200px,
+  xxl: 1400px
+  );
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
@@ -15,8 +22,10 @@ body{
   background-color: $primary;
   background-image: url('/src/img/home/background-home-desktop.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; 
 }
+
+header{padding-top: 40px;}
 
 .h-100{height: 100%;}
 
@@ -28,9 +37,14 @@ nav div{
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-span{
+nav span{
   font-weight: bold;
   margin-right: 5px;
+}
+a{
+  color: #0B0D17;
+  text-decoration: none;
+
 }
 
 .active{border-bottom: 3px solid white;}
@@ -45,13 +59,29 @@ hr{
   position: absolute;
 }
 
-header{padding-top: 40px;}
+
 
 nav li{margin-right: 50px;}
+
+.container-fluid{
+  margin: 0;
+  padding: 0;
+}
 
 nav img{
   margin-left: 55px;
   top: 0 ;
 }
 
+#ex{margin-top: 150px;}
+
+#render{overflow: hidden;}
+
 .nactive:hover{border-bottom-color:  rgba(255, 255, 255, 0.5);}
+
+@media only screen and (max-width:1000px){
+  nav span{
+    display: none;
+  }
+  nav li{margin-right: 37px;}
+}
